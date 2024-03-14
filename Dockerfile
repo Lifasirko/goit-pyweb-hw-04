@@ -14,4 +14,5 @@ COPY . .
 CMD ["python", "main.py"]
 
 # docker build -t goit-pyweb-hw-04 .
-# docker run -v C:\Users\MikeK\PycharmProjects\in_process\goit-pyweb-hw-04\front-init\front-init\storage:/app/front-init/front-init/storage -p 8000:8000 --name site goit-pyweb-hw-04
+# docker run -v C:/Users/MikeK/PycharmProjects/in_process/goit-pyweb-hw-04/front-init/front-init/storage:/app/front-init/front-init/storage -p 8000:8000 --name site goit-pyweb-hw-04
+

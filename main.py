@@ -64,7 +64,7 @@ def store_data(data):
     storage_dir = 'front-init/front-init/storage'
     if not os.path.exists(storage_dir):
         os.makedirs(storage_dir)
-    with open(os.path.join(storage_dir, 'data.json'), 'w') as f:
+    with open(os.path.join(storage_dir, 'data.json'), 'a') as f:
         json.dump(data, f)
 
 
@@ -95,7 +95,23 @@ def run(server_class=HTTPServer, handler_class=HttpHandler):
         http.server_close()
 
 
+def checking_storage():
+    storage_dir = 'front-init/front-init/storage'
+    data_file = 'data.json'
+    storage_path = os.path.join(storage_dir, data_file)
+
+    # Перевірка на існування директорії
+    if not os.path.exists(storage_dir):
+        os.makedirs(storage_dir)
+
+    # Перевірка на існування файлу
+    if not os.path.exists(storage_path):
+        with open(storage_path, 'w') as f:
+            json.dump({}, f)  # Створення порожнього JSON-файлу
+
+
 def main():
+    checking_storage()
     http_server_thread = threading.Thread(target=run)
     http_server_thread.start()
     start_udp_server()
